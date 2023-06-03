@@ -42,13 +42,13 @@ export const Header = () => {
                 <TextTransition style={{color:'cyan', textAlign:'center', fontSize:25, lineHeight:1}} springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
             </div>
             
-            <div style={{height:'100%', width:'100%',display:'flex', alignItems:'center', justifyContent:'center'}}>
+            <Box sx={{height:'100%', width:'100%',display:'flex', alignItems:'center', justifyContent:'center'}}>
                <div>
                     <Button variant='outlined' sx={{ color: 'cyan', borderColor: 'cyan', marginBottom:20 }}>
                         más
                     </Button>
                </div>
-            </div>
+            </Box>
         </Box>
 
     </Box>

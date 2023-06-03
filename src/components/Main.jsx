@@ -11,6 +11,7 @@ export const Main = () => {
         alignSelf:'center',
         display:'flex',
         flexDirection:{xs:'column',md:'row'},
+        backgroundColor:'white',
         m:0,
         p:0,
       }}>

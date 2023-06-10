@@ -24,6 +24,12 @@ function App() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const openWhatsappChat = () => {
+    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, '_blank');
+  };
   
   const handleButtonClick = (event,page) => {
     console.log(page)
@@ -61,6 +67,11 @@ function App() {
                 top: contact.current.offsetTop,
                 behavior: 'smooth',
             });
+        }
+        break;
+        case 'WhatsApp':
+            if (contact.current) {
+                openWhatsappChat()
         }
         break;
        

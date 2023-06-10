@@ -9,17 +9,19 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import Fab from '@mui/material/Fab'
 import { useMediaQuery } from '@mui/material';
 import logo from '../../assets/logo.jpeg'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { motion, useScroll } from "framer-motion";
 
-const pages = ['Quienes somos','Que hacemos', 'Presupuesto', 'Blog','Contacto'];
+const pages = ['Quienes somos','Que hacemos', 'Presupuesto', 'Blog','WhatsApp'];
 
 
 export const Appbar = ({handleButtonClick}) => {
     const isMobile = useMediaQuery('(max-width:600px)');
     const [anchorElNav, setAnchorElNav] = useState(null);
+    const [color,setColor]= useState('#FFF')
   
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
@@ -83,7 +85,7 @@ export const Appbar = ({handleButtonClick}) => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={(event) => handleButtonClick(event,page)}>
+                  <MenuItem key={page} onClick={(event)=>handleButtonClick(event,page)}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
@@ -92,7 +94,7 @@ export const Appbar = ({handleButtonClick}) => {
            
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'flex-end', mr:5 }}>
               {pages.map((page) => {
-                 if (page === 'Contacto' && !isMobile) {
+                 if (page === 'WhatsApp' && !isMobile) {
                     return null; // Oculta el enlace de contacto en dispositivos no móviles
                   }
                 return(
@@ -108,9 +110,9 @@ export const Appbar = ({handleButtonClick}) => {
             </Box>
   
             <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }  }}>
-                <Button onClick={()=>openWhatsappChat()} sx={{width:40, height:40, borderRadius:50}} variant="contained">
-                    <WhatsAppIcon sx={{color:{xs:'#fff',xl:'#4f6cf4'}, fontSize:{xl:50}}}/>
-                </Button>
+                <Fab onClick={()=>openWhatsappChat()} onMouseEnter={()=>{setColor('#4f6cf4')}} onMouseLeave={()=>{setColor('#fff')}} sx={{width:40,height:40,borderRadius:28,backgroundColor:'#4f6cf4'}} variant="contained">
+                    <WhatsAppIcon  sx={{color,position:'absolute', fontSize:{xl:50}}}/>
+                </Fab>
             </Box>
           </Toolbar>
         </Container>

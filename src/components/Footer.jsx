@@ -46,6 +46,26 @@ theme.typography.h6 = {
       fontSize: '2.6rem',
     },
   };
+  const openFacebook = () => {
+    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, '_blank');
+  };
+  const openInstagram = () => {
+    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, '_blank');
+  };
+  const openLinkedin = () => {
+    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, '_blank');
+  };
+  const openWhatsappChat = () => {
+    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, '_blank');
+  };
 
 export const Footer = () => {
   return (

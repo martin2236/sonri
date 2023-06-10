@@ -114,7 +114,7 @@ export const Main = ({main}) => {
           }}
         >
           <img
-            style={{ height: "50vh" }}
+            style={{ height: "80%" }}
             src={`${mainImage}`}
           />
         </Box>

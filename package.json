@@ -1,13 +1,13 @@
 {
   "name": "sonri",
   "private": true,
+  "homepage":"http://martin2236.github.io/sonri",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "deploy":"gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
-    "homepage":"http://martin2236.github.io/sonri",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

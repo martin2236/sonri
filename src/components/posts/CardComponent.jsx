@@ -14,6 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { motion, useScroll } from "framer-motion";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,7 +28,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export const CardComponent = ({articulo}) => {
-
+    const { scrollYProgress } = useScroll();
     const [expanded, setExpanded] = useState(false);
     const [color, setColor] = useState('gray');
 
@@ -45,7 +46,12 @@ export const CardComponent = ({articulo}) => {
     };
   
     return (
-      <Card sx={{ maxWidth: 345, mt:3, mb:3}} raised>
+      <Card 
+      component={motion.div}
+      initial={{ x: '-100%' }}
+      whileInView={{ x: 0 }}
+      transition={{ duration: 1 }}
+      sx={{ maxWidth: 345, mt:3, mb:3}} raised>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: '#4f6cf4' }} aria-label="recipe">

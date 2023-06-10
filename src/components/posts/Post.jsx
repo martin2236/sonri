@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import Box from '@mui/material/Box';
 import {CardComponent} from './CardComponent.jsx'
 import imagenArticulo1 from '../../assets/grafanaPanel.jpg'
@@ -38,9 +38,10 @@ const articulos = [
     }
 ]
 
-export const Post = () => {
+export const Post = ({post}) => {
   return (
     <Box 
+    ref={post}
         sx={{
             minHeight:'80vh',
         }}

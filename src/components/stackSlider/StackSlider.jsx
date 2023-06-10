@@ -9,6 +9,7 @@ import prometeus from '../../assets/technologies/prometeus.png'
 import python from '../../assets/technologies/python.png'
 import solarwinds from '../../assets/technologies/solarwinds.png'
 import zabbix from '../../assets/technologies/zabbix.png'
+import fondo from '../../assets/bg-top.png'
 
 const autoplayOptions = {
     delay: 2000,
@@ -27,6 +28,10 @@ export const StackSlider = () => {
         alignItems:'center',
         justifyContent:{xs:'center',md:'inherit'},
         backgroundColor:'#4f6cf4',
+        backgroundImage: `url(${fondo})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "bottom",
         marginTop:5
     }}>
         <Box sx={{display:{xs:'none',md:'inherit'}}} className="embla" ref={emblaRef1}>

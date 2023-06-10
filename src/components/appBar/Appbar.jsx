@@ -12,11 +12,12 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useMediaQuery } from '@mui/material';
 import logo from '../../assets/logo.jpeg'
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
-const pages = ['Quienes somos','Que hacemos', 'Clientes', 'Blog','Contacto'];
+const pages = ['Quienes somos','Que hacemos', 'Presupuesto', 'Blog','Contacto'];
 
 
-export const Appbar = () => {
+export const Appbar = ({handleButtonClick}) => {
     const isMobile = useMediaQuery('(max-width:600px)');
     const [anchorElNav, setAnchorElNav] = useState(null);
   
@@ -27,15 +28,19 @@ export const Appbar = () => {
       setAnchorElUser(event.currentTarget);
     };
   
-    const handleCloseNavMenu = () => {
-      setAnchorElNav(null);
-    };
-  
     const handleCloseUserMenu = () => {
       setAnchorElUser(null);
     };
 
- 
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+      };
+
+      const openWhatsappChat = () => {
+        const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
+        const url = `https://wa.me/${phoneNumber}`;
+        window.open(url, '_blank');
+      };
   
     return (
       <AppBar sx={{backgroundColor:'white'}}>
@@ -78,7 +83,7 @@ export const Appbar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} onClick={(event) => handleButtonClick(event,page)}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
@@ -93,7 +98,7 @@ export const Appbar = () => {
                 return(
                     <Button
                     key={page}
-                    onClick={handleCloseNavMenu}
+                    onClick={(event)=>handleButtonClick(event,page)}
                     sx={{ my: 2, color: 'black', display: 'block' }}
                     >
                     {page}
@@ -103,7 +108,9 @@ export const Appbar = () => {
             </Box>
   
             <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }  }}>
-                <Button variant="contained">Contacto</Button>
+                <Button onClick={()=>openWhatsappChat()} sx={{width:40, height:40, borderRadius:50}} variant="contained">
+                    <WhatsAppIcon sx={{color:{xs:'#fff',xl:'#4f6cf4'}, fontSize:{xl:50}}}/>
+                </Button>
             </Box>
           </Toolbar>
         </Container>

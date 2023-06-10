@@ -36,6 +36,7 @@ export const Main = ({main}) => {
         sx={{
           width: "100%",
           minHeight: { xs: "50vh", md: "80vh" },
+          maxHeight:{xs:100},
           alignSelf: "center",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },

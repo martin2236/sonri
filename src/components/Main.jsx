@@ -36,7 +36,6 @@ export const Main = ({main}) => {
         sx={{
           width: "100%",
           minHeight: { xs: "50vh", md: "80vh" },
-          maxHeight:{xs:100},
           alignSelf: "center",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
@@ -81,6 +80,7 @@ export const Main = ({main}) => {
                 display: "block",
                 marginLeft: "auto",
                 marginRight: "auto",
+                mb:5
               }}
               component={motion.div}
               initial={{ opacity: 0, y: 100 }}

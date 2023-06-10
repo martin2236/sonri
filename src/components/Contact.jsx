@@ -72,8 +72,8 @@ export const Contact = ({contact}) => {
          initial={{ x: '-100%' }}
          whileInView={{ x: 0 }}
          transition={{ duration: 1 }}
-        sx={{minHeight:{xs:'40vh',md:'80vh'}, width:{xs:'100%',md:'50%'},backgroundColor:'#4f6cf4', display:'flex',flexDirection:'column', alignItems:'center',justifyContent:'center'}}>
-            <form onSubmit={formik.handleSubmit}>
+        sx={{minHeight:{xs:'40vh',md:'80vh'}, width:{xs:'100%',md:'50%'},mt:2,backgroundColor:'#4f6cf4', display:'flex', alignItems:'center',justifyContent:'center'}}>
+            <form style={{width:'100%',display:'flex', alignItems:'center',justifyContent:'center'}} onSubmit={formik.handleSubmit}>
                 <Box sx={{ mb: { xs: 1 }, borderRadius: { xs: 3, md: 10 }, height: '90%', width: '90%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', backgroundColor: '#FFF' }}>
                     <Box sx={{ pt: 5, px: 2, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, width: '100%', justifyContent: 'space-between' }}>
                     <TextField

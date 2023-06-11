@@ -80,7 +80,8 @@ export const Main = ({main}) => {
                 display: "block",
                 marginLeft: "auto",
                 marginRight: "auto",
-                mb:5
+                textJustify:'center',
+                textAlign:'center'
               }}
               component={motion.div}
               initial={{ opacity: 0, y: 100 }}

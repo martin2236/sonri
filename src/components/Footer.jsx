@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import fondo from '../assets/backgroundFooter.png'
 import MarkerIcon from '@mui/icons-material/Room';
@@ -10,7 +10,9 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Typography from '@mui/material/Typography';
 import { createTheme,ThemeProvider } from '@mui/material/styles';
-import { motion, useScroll } from "framer-motion";
+import { styled } from '@mui/material/styles';
+import { motion } from "framer-motion";
+import Button from '@mui/material/Button';
 
 
 const theme = createTheme();
@@ -46,28 +48,42 @@ theme.typography.h6 = {
       fontSize: '2.6rem',
     },
   };
-  const openFacebook = () => {
-    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
-    const url = `https://wa.me/${phoneNumber}`;
-    window.open(url, '_blank');
-  };
-  const openInstagram = () => {
-    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
-    const url = `https://wa.me/${phoneNumber}`;
-    window.open(url, '_blank');
-  };
-  const openLinkedin = () => {
-    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
-    const url = `https://wa.me/${phoneNumber}`;
-    window.open(url, '_blank');
-  };
-  const openWhatsappChat = () => {
-    const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
-    const url = `https://wa.me/${phoneNumber}`;
-    window.open(url, '_blank');
-  };
+  const CustomButton = styled(Button)({
+    boxShadow: 'none',
+    textTransform: 'none',
+    fontSize: 16,
+    justifyContent:'flex-start',
+    '&:hover': {
+        backgroundColor: '#FFF',
+      },
+    
+  });
 
-export const Footer = () => {
+  
+
+export const Footer = ({handleButtonClick}) => {
+    const [active1,setActive1]= useState('#000')
+    const [active2,setActive2]= useState('#000')
+    const [active3,setActive3]= useState('#000')
+
+    const openFacebook = () => {
+        const url = `https://wa.me/${phoneNumber}`;
+        window.open(url, '_blank');
+      };
+      const openInstagram = () => {
+        const url = `https://wa.me/${phoneNumber}`;
+        window.open(url, '_blank');
+      };
+      const openLinkedin = () => {
+        const url = `https://wa.me/${phoneNumber}`;
+        window.open(url, '_blank');
+      };
+      const openWhatsappChat = () => {
+        const phoneNumber = '123456789'; // Número de teléfono al que deseas enviar el mensaje
+        const url = `https://wa.me/${phoneNumber}`;
+        window.open(url, '_blank');
+      };
+
   return (
       <ThemeProvider theme={theme}>
         <Box sx={{
@@ -76,68 +92,75 @@ export const Footer = () => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top',
+        mb:{md:5}
         }}>
          
-          <Box sx={{width:'100%', display:'flex', flexDirection:{xs:'column',md:'row'}}}>
-            <Box
-             component={motion.div}
-             initial={{ y: '100%' }}
-             whileInView={{ y: 0 }}
-             transition={{ duration: 1 }}
-            sx={{width:{xs:'100%',md:'33%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}}>
-            <Typography variant="h6" gutterBottom sx={{marginTop:{xs:5,md:5,lg:10,xl:15}, color:{xs:'black',xl:'black'}}}>
-                Info
-            </Typography>
-                <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:2, mt:2}}>
-                    <MarkerIcon sx={{fontSize:{xl:40}}}/>
-                    <Typography variant='body1' sx={{ml:2}}>Direccion: calle falsa 123</Typography>
+            <Box sx={{width:'100%', display:'flex', flexDirection:{xs:'column',md:'row'}}}>
+                <Box
+                component={motion.div}
+                initial={{ y: '100%' }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 1 }}
+                sx={{width:{xs:'100%',md:'33%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}}>
+                    <Typography variant="h6" gutterBottom sx={{marginTop:{xs:5,md:5,lg:10,xl:15}, color:{xs:'black',xl:'black'}}}>
+                        Info
+                    </Typography>
+                    <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:3, mt:2, width:'100%'}}>
+                        <MarkerIcon sx={{fontSize:{xl:40}}}/>
+                        <Typography variant='body1' sx={{ml:2}}>Direccion: calle falsa 123</Typography>
+                    </Box>
+                    <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:3, mt:2, width:'100%'}}>
+                        <PhoneIcon sx={{fontSize:{xl:40}}}/>
+                        <Typography variant='body1' sx={{ml:2}}>Telefono: 0220-1234323</Typography>
+                    </Box>
+                    <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:3, mt:2, width:'100%'}}>
+                        <EmailIcon sx={{fontSize:{xl:40}}}/>
+                        <Typography variant='body1' sx={{ml:2}}>Email: gctecSolutions@gamil.com</Typography>
+                    </Box>
                 </Box>
-                <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:2, mt:2}}>
-                    <PhoneIcon sx={{fontSize:{xl:40}}}/>
-                    <Typography variant='body1' sx={{ml:2}}>Telefono: 0220-1234323</Typography>
-                </Box>
-                <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:2, mt:2}}>
-                    <EmailIcon sx={{fontSize:{xl:40}}}/>
-                    <Typography variant='body1' sx={{ml:2}}>Email: gctecSolutions@gamil.com</Typography>
-                </Box>
-            </Box>
 
-            <Box 
-             component={motion.div}
-             initial={{ y: '100%' }}
-             whileInView={{ y: 0 }}
-             transition={{ duration: 1 }}
-            sx={{width:{xs:'100%',md:'33%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}}>
-            <Typography variant="h6" gutterBottom sx={{marginTop:{xs:5,md:5,lg:10,xl:15}, color:{xs:'black',xl:'black'}}}>
-                Links utiles
-            </Typography>
-                <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:2,mt:2}}>
-                    <Typography variant='body1'>Sobre nosotros</Typography>
+                <Box 
+                component={motion.div}
+                initial={{ y: '100%' }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 1 }}
+                sx={{width:{xs:'100%',md:'33%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}}>
+                    <Typography variant="h6" gutterBottom sx={{marginTop:{xs:5,md:5,lg:10,xl:15}, color:{xs:'black',xl:'black'}}}>
+                        Links utiles
+                    </Typography>
+                    <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:3, mt:2, width:{xs:'100%',md:'60%'}}}>
+                        <CustomButton onClick={(event)=>handleButtonClick(event,'Quienes somos')} onMouseEnter={()=> setActive1('#4f6cf4')} onMouseLeave={()=> setActive1('#000')} variant='text' sx={{m:0,p:0,fontWeight:400}}>
+                            <Typography variant='body1' color={active1} >Sobre nosotros</Typography>
+                        </CustomButton>
+                    </Box>
+                    <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:3, mt:2, width:{xs:'100%',md:'60%'}}}>
+                        <CustomButton onClick={(event)=>handleButtonClick(event,'Que hacemos')} variant='text'onMouseEnter={()=> setActive2('#4f6cf4')} onMouseLeave={()=> setActive2('#000')} sx={{m:0,p:0,fontWeight:400}}>
+                            <Typography variant='body1' color={active2}>Nuestros servicios</Typography>
+                        </CustomButton>
+                    </Box>
+                    <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:3, mt:2, width:{xs:'100%',md:'60%'}}}>
+                    <CustomButton onClick={(event)=>handleButtonClick(event,'Blog')} variant='text'onMouseEnter={()=> setActive3('#4f6cf4')} onMouseLeave={()=> setActive3('#000')} sx={{m:0,p:0,fontWeight:400}}>
+                        <Typography variant='body1' color={active3}>Posts</Typography>
+                    </CustomButton>
+                    </Box>
                 </Box>
-                <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:2,mt:2}}>
-                    <Typography variant='body1'>Nuestros servicios</Typography>
-                </Box>
-                <Box sx={{display:'flex', flexDirection:'row', alignItems:'center',ml:2,mt:2}}>
-                    <Typography variant='body1'>Posts</Typography>
-                </Box>
-            </Box>
 
-            <Box 
-            component={motion.div}
-            initial={{ y: '100%' }}
-            whileInView={{ y: 0 }}
-            transition={{ duration: 1 }}
-            sx={{width:{xs:'100%',md:'33%',mb:{xs:3,md:0}}}}>
-            <Typography variant="h6" gutterBottom sx={{textAlign:'center',marginTop:{xs:5,md:5,lg:10,xl:15}, color:{xs:'black',xl:'black'}}}>
-                Nuestras redes
-            </Typography>
-                <Box sx={{display:'flex', flexDirection:'row', justifyContent:'center',mt:5,mb:5}}>
-                    <FacebookIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50} }}/>
-                    <InstagramIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50}, ml:3}}/>
-                    <LinkedInIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50}, ml:3}}/>
-                    <WhatsAppIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50}, ml:3}}/>
+                <Box 
+                component={motion.div}
+                initial={{ y: '100%' }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 1 }}
+                sx={{width:{xs:'100%',md:'33%',mb:{xs:3,md:0}}}}>
+                    <Typography variant="h6" gutterBottom sx={{textAlign:'center',marginTop:{xs:5,md:5,lg:10,xl:15}, color:{xs:'black',xl:'black'}}}>
+                        Nuestras redes
+                    </Typography>
+                    <Box sx={{display:'flex', flexDirection:'row', justifyContent:'center',mt:5,mb:5}}>
+                        <FacebookIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50} }}/>
+                        <InstagramIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50}, ml:3}}/>
+                        <LinkedInIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50}, ml:3}}/>
+                        <WhatsAppIcon sx={{color:{xs:'#4f6cf4',xl:'#4f6cf4'}, fontSize:{xl:50}, ml:3}}/>
+                    </Box>
                 </Box>
-            </Box>
           </Box>
       </Box>
       </ThemeProvider>

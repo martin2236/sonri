@@ -32,13 +32,12 @@ function App() {
   };
   
   const handleButtonClick = (event,page) => {
-    console.log(page)
     switch(page){
         case 'Quienes somos':
             if (main.current) {
                 handleButtonClick()
                 window.scrollTo({
-                top: main.current.offsetTop,
+                top: main.current.offsetTop - 100,
                 behavior: 'smooth',
             });
         }
@@ -47,7 +46,7 @@ function App() {
             if (services.current) {
                 handleButtonClick()
                 window.scrollTo({
-                top: services.current.offsetTop,
+                top: services.current.offsetTop - 100,
                 behavior: 'smooth',
             });
         }
@@ -56,15 +55,15 @@ function App() {
             if (post.current) {
                 handleButtonClick()
                 window.scrollTo({
-                top: post.current.offsetTop,
+                top: post.current.offsetTop - 100,
                 behavior: 'smooth',
             });
         }
         break;
-        case 'Presupuesto':
+        case 'Contacto':
             if (contact.current) {
                 window.scrollTo({
-                top: contact.current.offsetTop,
+                top: contact.current.offsetTop - 100,
                 behavior: 'smooth',
             });
         }
@@ -74,10 +73,8 @@ function App() {
                 openWhatsappChat()
         }
         break;
-       
     }
-    
-  };
+};
   
 
   return (
@@ -85,14 +82,14 @@ function App() {
         <CssBaseline/>
         <Container sx={{p:0, bgcolor:'white'}} maxWidth={false} disableGutters>
             <Appbar handleButtonClick={handleButtonClick}/>
-            <Header2 id="header" header={header}/>
+            <Header2 id="header" header={header} handleButtonClick={handleButtonClick}/>
             <Main id="main" main={main}/>
             <Statistics id="statistics" />
             <Services id="services" services={services}/>
             <StackSlider id="stackSlider" />
             <Post id="post" post={post}/>
             <Contact id="contact" contact={contact}/>
-            <Footer/>
+            <Footer handleButtonClick={handleButtonClick}/>
         </Container>
     </>
   )

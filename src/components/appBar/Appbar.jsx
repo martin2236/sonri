@@ -15,7 +15,7 @@ import logo from '../../assets/logo.jpeg'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { motion, useScroll } from "framer-motion";
 
-const pages = ['Quienes somos','Que hacemos', 'Presupuesto', 'Blog','WhatsApp'];
+const pages = ['Quienes somos','Que hacemos', 'Blog' , 'Contacto','WhatsApp'];
 
 
 export const Appbar = ({handleButtonClick}) => {

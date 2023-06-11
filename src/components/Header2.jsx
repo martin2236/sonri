@@ -60,7 +60,7 @@ theme.typography.h3 = {
     },
   };
 
-  export const Header2 = ({header}) => {
+  export const Header2 = ({header, handleButtonClick}) => {
     const [index, setIndex] = useState(0);
   
     useEffect(() => {
@@ -176,6 +176,7 @@ theme.typography.h3 = {
           </Box>
 
           <Button
+          onClick={(event)=>handleButtonClick(event,'Contacto')}
             variant="contained"
             sx={{
               mt: { xs: 4, md: 10, lg: 7, xl: 15 },

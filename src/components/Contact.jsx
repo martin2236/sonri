@@ -70,7 +70,7 @@ export const Contact = ({contact}) => {
     
       
       const onSubmit = (values,{ resetForm }) => {
-        emailjs.sendForm('service_6dljxth', 'template_u7jmdfw', '#myForm', 'gs0RrVdc9fbTsb_i_')
+        emailjs.sendForm('service_27cmsog', 'template_mp3avcg', '#myForm', '4FTfWGXvObad2Njqv')
             .then((result) => {
                 console.log(result.text);
                 resetForm()
@@ -126,7 +126,7 @@ export const Contact = ({contact}) => {
             initial={{ x: '-100%' }}
             whileInView={{ x: 0 }}
             transition={{ duration: 1 }}
-            sx={{minHeight:{xs:'40vh',md:'80vh'}, width:{xs:'100%',md:'50%'},mt:2,backgroundColor:'#4f6cf4', display:'flex', alignItems:'center',justifyContent:'center'}}>
+            sx={{minHeight:{xs:'40vh',md:'80vh'}, width:{xs:'100%',md:'50%'},backgroundColor:'#4f6cf4', display:{lg:'flex',xl:'none'}, alignItems:'center',justifyContent:'center'}}>
                 <form id="myForm" style={{width:'100%',display:'flex', alignItems:'center',justifyContent:'center'}} onSubmit={formik.handleSubmit}>
                     <Box sx={{ mb: { xs: 1 }, borderRadius: { xs: 3, md: 10 }, height: '90%', width: '90%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', backgroundColor: '#FFF' }}>
                         <Box sx={{ pt: 5, px: 2, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, width: '100%', justifyContent: 'space-between' }}>
@@ -207,6 +207,97 @@ export const Contact = ({contact}) => {
                                 sx={{ mt: { xs: 3, md: 3 }, mb: { xs: 2, md: 5 }, ml: { xs: 2, md: 3 }, color: '#fff', backgroundColor: '#4f6cf4', borderColor: 'cyan', width: '90%', height: 50 }}
                             >
                                 Contactanos
+                            </Button>
+                        </Box>
+                </form>
+            </Box>
+            <Box
+            component={motion.div}
+            initial={{ x: '-100%' }}
+            whileInView={{ x: 0 }}
+            transition={{ duration: 1 }}
+            sx={{height:'80vh', width:{xs:'100%',md:'50%'},outlineColor:'#4f6cf4',backgroundColor:'#4f6cf4', display:{lg:'none',xl:'flex'}, alignItems:'center',justifyContent:'center'}}>
+                <form id="myForm" style={{width:'90%',height:'100%',outlineColor:'#4f6cf4',display:'flex', alignItems:'center',justifyContent:'center'}} onSubmit={formik.handleSubmit}>
+                    <Box sx={{ mb: { xs: 1 }, borderRadius: { xs: 3, md: 10 }, height: '90%', width: '90%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFF' }}>
+                        <Box sx={{ mb:5,pt: 5, px: 2, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, width: '100%', justifyContent: 'space-between' }}>
+                            <TextField
+                                InputProps={{
+                                    style: {
+                                    fontSize: '25px', 
+                                    },
+                                }}
+                                sx={{ width: { xs: '100%', md: '48%' }, backgroundColor: '#FFF' }}
+                                label="Nombre"
+                                variant="outlined"
+                                name="user_name"
+                                value={formik.values.user_name}
+                                onChange={formik.handleChange}
+                                error={formik.touched.user_name && Boolean(formik.errors.user_name)}
+                                helperText={formik.touched.user_name && formik.errors.user_name}
+                                size="large"
+                            />
+                            <TextField
+                                 InputProps={{
+                                    style: {
+                                    fontSize: '25px', 
+                                    },
+                                }}
+                                sx={{ mt: { xs: 2, md: 0 }, width: { xs: '100%', md: '48%' }, backgroundColor: '#FFF' }}
+                                label="Email"
+                                variant="outlined"
+                                name="user_email"
+                                value={formik.values.user_email}
+                                onChange={formik.handleChange}
+                                error={formik.touched.user_email && Boolean(formik.errors.user_email)}
+                                helperText={formik.touched.user_email && formik.errors.user_email}
+                                size="large"
+                            />
+                        </Box>
+                        <Box sx={{mb:5, mt: 2, px: 2, width: '100%' }}>
+                            <TextField
+                                 InputProps={{
+                                    style: {
+                                    fontSize: '25px',  
+                                    },
+                                }}
+                                sx={{ width: '100%', backgroundColor: '#FFF' }}
+                                label="Asunto"
+                                variant="outlined"
+                                name="asunto"
+                                value={formik.values.asunto}
+                                onChange={formik.handleChange}
+                                error={formik.touched.asunto && Boolean(formik.errors.asunto)}
+                                helperText={formik.touched.asunto && formik.errors.asunto}
+                                size="large"
+                            />
+                        </Box>
+                            <Box sx={{mb:5, mt: 2, px: 2, width: '100%' }}>
+                                <TextField
+                                    InputProps={{
+                                        style: {
+                                        fontSize: '25px',  
+                                        },
+                                    }}
+                                    sx={{ width: '100%', backgroundColor: '#FFF' }}
+                                    label="Mensaje"
+                                    variant="outlined"
+                                    multiline
+                                    rows={5}
+                                    name="message"
+                                    value={formik.values.message}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.message && Boolean(formik.errors.message)}
+                                    helperText={formik.touched.message && formik.errors.message}
+                                />
+                            </Box>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                sx={{ mt: { xs: 3, md: 3 }, mb: { xs: 2, md: 5 }, ml: { xs: 2, md: 3 }, color: '#fff', backgroundColor: '#4f6cf4', borderColor: 'cyan', width: '90%', height: 70 }}
+                            >
+                                 <Typography variant='body1' sx={{color:'#FFF', textAlign:'center'}}>
+                                   Contactanos
+                                </Typography>
                             </Button>
                         </Box>
                 </form>

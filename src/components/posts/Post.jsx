@@ -47,7 +47,7 @@ export const Post = ({post}) => {
         }}
     >
         <h1 style={{marginLeft:10}}>Ultimas tendencias</h1>
-        <Box sx={{marginLeft:{xs:0,md:5}, display:'flex', flexDirection:{xs:'column',md:'row'}, flexWrap:'wrap', alignItems:'center', justifyContent:'space-around'}}>
+        <Box sx={{marginLeft:{xs:0,md:5}, display:'flex', flexDirection:{xs:'column',md:'row'}, flexWrap:'wrap', alignItems:'flex-start', justifyContent:'space-around'}}>
             {
                 articulos.map((articulo) => {
                     return(

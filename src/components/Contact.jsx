@@ -68,8 +68,31 @@ export const Contact = ({contact}) => {
         setSnackbar({ ...snackbar, open: false });
       };
     
-      
+      //* fromulario hasta 1300px
       const onSubmit = (values,{ resetForm }) => {
+        emailjs.sendForm('service_27cmsog', 'template_mp3avcg', '#myForm', '4FTfWGXvObad2Njqv')
+            .then((result) => {
+                console.log(result.text);
+                resetForm()
+                openSnackbar({
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                    severity:'success',
+                    message:'Mensaje enviado con Éxito'
+                  })
+            }, (error) => {
+                console.log(error.text);
+                openSnackbar({
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                    severity:'warning',
+                    message:'Ups ocurrió un error por favor intente más tarde'
+                  })
+            });
+      };
+
+      //*formulario a mas de 1300px
+      const onSubmit1 = (values,{ resetForm }) => {
         emailjs.sendForm('service_27cmsog', 'template_mp3avcg', '#myForm', '4FTfWGXvObad2Njqv')
             .then((result) => {
                 console.log(result.text);
@@ -93,6 +116,11 @@ export const Contact = ({contact}) => {
       const formik = useFormik({
         initialValues,
         onSubmit,
+        validationSchema,
+      });
+      const formikLG = useFormik({
+        initialValues,
+        onSubmit1,
         validationSchema,
       });
   return (
@@ -211,13 +239,14 @@ export const Contact = ({contact}) => {
                         </Box>
                 </form>
             </Box>
+            {/*formulario a mas de 1300px*/}
             <Box
             component={motion.div}
             initial={{ x: '-100%' }}
             whileInView={{ x: 0 }}
             transition={{ duration: 1 }}
-            sx={{height:'80vh', width:{xs:'100%',md:'50%'},outlineColor:'#4f6cf4',backgroundColor:'#4f6cf4', display:{lg:'none',xl:'flex'}, alignItems:'center',justifyContent:'center'}}>
-                <form id="myForm" style={{width:'90%',height:'100%',outlineColor:'#4f6cf4',display:'flex', alignItems:'center',justifyContent:'center'}} onSubmit={formik.handleSubmit}>
+            sx={{height:'80vh', width:{xs:'100%',md:'50%'},outlineColor:'#4f6cf4',backgroundColor:'#4f6cf4', display:{xs:'none',md:'none',lg:'none',xl:'flex'}, alignItems:'center',justifyContent:'center'}}>
+                <form id="myForm1" style={{width:'90%',height:'100%',outlineColor:'#4f6cf4',display:'flex', alignItems:'center',justifyContent:'center'}} onSubmit={formikLG.handleSubmit}>
                     <Box sx={{ mb: { xs: 1 }, borderRadius: { xs: 3, md: 10 }, height: '90%', width: '90%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFF' }}>
                         <Box sx={{ mb:5,pt: 5, px: 2, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, width: '100%', justifyContent: 'space-between' }}>
                             <TextField
@@ -230,10 +259,10 @@ export const Contact = ({contact}) => {
                                 label="Nombre"
                                 variant="outlined"
                                 name="user_name"
-                                value={formik.values.user_name}
-                                onChange={formik.handleChange}
-                                error={formik.touched.user_name && Boolean(formik.errors.user_name)}
-                                helperText={formik.touched.user_name && formik.errors.user_name}
+                                value={formikLG.values.user_name}
+                                onChange={formikLG.handleChange}
+                                error={formikLG.touched.user_name && Boolean(formikLG.errors.user_name)}
+                                helperText={formikLG.touched.user_name && formikLG.errors.user_name}
                                 size="large"
                             />
                             <TextField
@@ -246,10 +275,10 @@ export const Contact = ({contact}) => {
                                 label="Email"
                                 variant="outlined"
                                 name="user_email"
-                                value={formik.values.user_email}
-                                onChange={formik.handleChange}
-                                error={formik.touched.user_email && Boolean(formik.errors.user_email)}
-                                helperText={formik.touched.user_email && formik.errors.user_email}
+                                value={formikLG.values.user_email}
+                                onChange={formikLG.handleChange}
+                                error={formikLG.touched.user_email && Boolean(formikLG.errors.user_email)}
+                                helperText={formikLG.touched.user_email && formikLG.errors.user_email}
                                 size="large"
                             />
                         </Box>
@@ -264,10 +293,10 @@ export const Contact = ({contact}) => {
                                 label="Asunto"
                                 variant="outlined"
                                 name="asunto"
-                                value={formik.values.asunto}
-                                onChange={formik.handleChange}
-                                error={formik.touched.asunto && Boolean(formik.errors.asunto)}
-                                helperText={formik.touched.asunto && formik.errors.asunto}
+                                value={formikLG.values.asunto}
+                                onChange={formikLG.handleChange}
+                                error={formikLG.touched.asunto && Boolean(formikLG.errors.asunto)}
+                                helperText={formikLG.touched.asunto && formikLG.errors.asunto}
                                 size="large"
                             />
                         </Box>
@@ -284,10 +313,10 @@ export const Contact = ({contact}) => {
                                     multiline
                                     rows={5}
                                     name="message"
-                                    value={formik.values.message}
-                                    onChange={formik.handleChange}
-                                    error={formik.touched.message && Boolean(formik.errors.message)}
-                                    helperText={formik.touched.message && formik.errors.message}
+                                    value={formikLG.values.message}
+                                    onChange={formikLG.handleChange}
+                                    error={formikLG.touched.message && Boolean(formikLG.errors.message)}
+                                    helperText={formikLG.touched.message && formikLG.errors.message}
                                 />
                             </Box>
                             <Button
